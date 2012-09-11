@@ -1,0 +1,5 @@
+* General refactoring - use command-line arguments in future versions; use a standard algorithm to generate a
+  less arbitrary rainbow hue and expand on that.
+* Cross-platform.
+* Preview text option.
+* Add more options such as different styles of rainbows, text style, etc., that enable more versatility.
