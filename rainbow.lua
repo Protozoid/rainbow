@@ -55,17 +55,19 @@ local function color_code(s, size)
 			"#F63817", "#E78E17", "#FFFC17", "#5EFB6E", "#1531EC", "#8E35EF"
 		}
 
-		local ran_num = math.random(1, #color_matrix) -- Create a pseudo-random number ranging from 1 to the size of the color matrix
+		-- Create a pseudo-random number ranging from 1 to the size of the color matrix
+		local ran_num = math.random(1, #color_matrix)
 		local color = color_matrix[ran_num]
 
 		if string.find(char_array[i], ' ') then whitespace = true end
 
-		if not whitespace then -- For resource conservation, we won't enclose whitespace in BBCode
+		-- For resource conservation, we won't enclose whitespace in BBCode
+		if not whitespace then
 			bbcode_str = "[color=" .. color .. "]" .. char_array[i] .. "[/color]"
 		end
 
-
-		if whitespace then -- If whitespace is in our token we'll simply leave it as is. Else we wrap it up with BBCode
+		-- If whitespace is in our token we'll simply leave it as is. Else we wrap it up with BBCode
+		if whitespace then
 			buff = buff .. char_array[i]
 		else
 			buff = buff .. bbcode_str
@@ -74,9 +76,10 @@ local function color_code(s, size)
 		whitespace = false
 	end
 
-	if not size then size = 3 end -- If no size parameter passed, defaults to 3
-
-	buff = "[size=" .. tostring(size) .. "]".. buff .. "[/size]" -- Finalize process by prepending and appending size tags to our string
+	-- If no size parameter passed, defaults to 3
+	if not size then size = 3 end
+	-- Finalize process by prepending and appending size tags to our string
+	buff = "[size=" .. tostring(size) .. "]".. buff .. "[/size]"
 
 	return buff, #buff
 end
@@ -86,21 +89,26 @@ end
 ----------------------------------------------
 
 local function main()
-	io.write("Enter your text to be color-coded: ") -- Prompt user to feed input to program for our process
-	input_text = io.read() -- Wait for input from the STDIN/STDOUT stream
+	-- Prompt user to feed input to program for our process
+	io.write("Enter your text to be color-coded: ") 
+	-- Wait for input from the STDIN/STDOUT stream
+	input_text = io.read()
 
 	-- Rinse, repeat
 	io.write("Now enter your size attribute for the text: ")
 	input_size = io.read()
 
-	print("Now initializing the process...\n") -- Print out user-friendly message while the process unfolds under the hood
+	-- Print out user-friendly message while the process unfolds under the hood
+	print("Now initializing the process...\n")
 
 	result = color_code(input_text, input_size)
 
 	clipboard.settext(result)
 
-	print("Done! Your legendary rainbow text has been copied to your clipboard.\n\nPress enter to exit.\n") -- Done!
-	io.read() -- Idle
+	-- Done!
+	print("Done! Your legendary rainbow text has been copied to your clipboard.\n\nPress enter to exit.\n")
+	-- Idle
+	io.read() 
 end
 
 main()
