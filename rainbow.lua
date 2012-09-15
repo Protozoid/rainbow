@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/env lua
 
 --------------------------------------------------------------
@@ -90,7 +91,7 @@ end
 
 local function main()
 	-- Prompt user to feed input to program for our process
-	io.write("Enter your text to be color-coded: ") 
+	io.write("Enter your text to be color-coded: ")
 	-- Wait for input from the STDIN/STDOUT stream
 	input_text = io.read()
 
@@ -103,12 +104,19 @@ local function main()
 
 	result = color_code(input_text, input_size)
 
-	clipboard.settext(result)
+	print("Would you like to copy the output to your clipboard? y/n")
 
-	-- Done!
-	print("Done! Your legendary rainbow text has been copied to your clipboard.\n\nPress enter to exit.\n")
+	-- Prompt user to copy text to clipboard or not
+	if io.read() == 'y' then
+		clipboard.settext(result)
+		-- Done!
+		print("\nDone! Your legendary rainbow text has been copied to your clipboard.\n\nPress enter to exit.")
+	else
+		os.exit()
+	end
+
 	-- Idle
-	io.read() 
+	io.read()
 end
 
 main()
