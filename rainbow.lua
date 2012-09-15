@@ -109,7 +109,7 @@ local function main()
 	if io.read() == 'y' then
 		clipboard.settext(result)
 		-- Done!
-		print("\nDone! Your legendary rainbow text has been copied to your clipboard.\n\nPress enter to exit.")
+		print("\nDone! Your legendary rainbow text has been copied to your clipboard.\n\nPress enter to exit.\n")
 	else
 		os.exit()
 	end
