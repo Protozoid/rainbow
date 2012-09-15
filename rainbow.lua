@@ -40,7 +40,8 @@ end
 -- @param size Lua number for the size of the text to output
 -- @usage color_code("Lorem ipsum dolor sit amet, consectetur, adipisci velit.")
 local function color_code(s, size)
-	local bool, err = assert(type(s) == "string", "Invalid data supplied.")  -- If given data not string, throw an exception & terminate our function
+	-- If given data not string, throw an exception & terminate our function
+	local bool, err = assert(type(s) == "string", "Invalid data supplied.") 
 
 	if not bool then return end
 
